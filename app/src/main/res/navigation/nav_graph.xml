@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/onlineFragment">
+
+    <fragment
+        android:id="@+id/onlineFragment"
+        android:name="com.eastnine.gaja.ui.OnlineFragment"
+        android:label="@string/online_fragment_label"
+        tools:layout="@layout/fragment_online" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.eastnine.gaja.ui.FavoriteFragment"
+        android:label="@string/favorite_fragment_label"
+        tools:layout="@layout/fragment_favorite" />
+    <action android:id="@+id/action_global_onlineFragment"
+        app:destination="@id/onlineFragment" />
+    <action android:id="@+id/action_global_favoriteFragment"
+        app:destination="@id/favoriteFragment" />
+</navigation>

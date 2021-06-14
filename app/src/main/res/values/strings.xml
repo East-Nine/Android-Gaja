@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Gaja</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="online_fragment_label">Online Fragment</string>
+    <string name="favorite_fragment_label">Favorite Fragment</string>
+
+    <string name="main_tab_full">전체 리스트</string>
+    <string name="main_tab_favorite">즐겨찾기</string>
+
+    <string name="favorite_filter_rate_asc">평점순 ▲</string>
+    <string name="favorite_filter_rate_desc">평점순 ▼</string>
+    <string name="favorite_filter_create_asc">즐겨찾기 시간순 ▲</string>
+    <string name="favorite_filter_create_desc">즐겨찾기 시간순 ▼</string>
+
+    <string name="shared_image">sharedImage</string>
+</resources>

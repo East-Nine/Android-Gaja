@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="com.eastnine.domain.util.TypeDef" />
+
+        <variable
+            name="page"
+            type="String" />
+
+        <variable
+            name="data"
+            type="com.eastnine.domain.vo.ProductVo" />
+
+        <variable
+            name="viewModel"
+            type="com.eastnine.gaja.viewmodel.DataViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/item_padding"
+        android:layout_marginBottom="@dimen/item_padding"
+        android:onClick="@{(view) -> viewModel.onClickedItem(view, data)}">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/padding_side" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/padding_side" />
+
+        <ImageView
+            android:id="@+id/image_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.0"
+            tools:src="@drawable/img_placeholder" />
+        <ToggleButton
+            android:id="@+id/image_favorite"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/toggle_favorite"
+            android:layout_margin="6dp"
+            android:checked="@{data.like}"
+            android:textOn=""
+            android:textOff=""
+            android:onClick="@{() -> viewModel.onClickedFavorite(data)}"
+            app:layout_constraintStart_toStartOf="@id/image_place"
+            app:layout_constraintTop_toTopOf="@id/image_place"
+            app:layout_constraintEnd_toEndOf="@id/image_place"
+            app:layout_constraintBottom_toBottomOf="@id/image_place"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
+            tools:checked="false"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_item_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/item_text_margin_vertical"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/grey_50"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintBottom_toTopOf="@id/text_rate"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
+            tools:text="내 집 같은 편안한 여기어때 숙소"/>
+        <TextView
+            android:id="@+id/text_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="6dp"
+            android:textSize="18dp"
+            android:textColor="@color/grey_50"
+            android:drawablePadding="@dimen/drawable_padding"
+            app:drawableStartCompat="@drawable/ic_star"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
+            tools:text="9.9" />
+        <TextView
+            android:id="@+id/text_favoriteTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:textSize="18dp"
+            android:textColor="@color/grey_50"
+            android:drawablePadding="@dimen/drawable_padding"
+            bind:page="@{page}"
+            bind:favoriteTime="@{data.create}"
+            app:drawableStartCompat="@drawable/ic_favorite_time"
+            app:layout_constraintStart_toEndOf="@id/text_rate"
+            app:layout_constraintTop_toTopOf="@id/text_rate"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintBottom_toBottomOf="@id/text_rate"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.5"
+            tools:text="2021.06.12" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <data>
+        <import type="java.text.NumberFormat" />
+        <import type="java.util.Locale" />
+
+        <variable
+            name="viewModel"
+            type="com.eastnine.gaja.viewmodel.PlaceDetailViewModel" />
+        <variable
+            name="dataViewModel"
+            type="com.eastnine.gaja.viewmodel.DataViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/padding_side" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="12dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/padding_side" />
+
+        <ImageView
+            android:id="@+id/image_thumbnail"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:background="#908393"
+            android:transitionName="@string/shared_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/image_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_arrow_back"
+            android:onClick="@{() -> viewModel.onClickedClose()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintTop_toTopOf="@id/guide_top"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <View
+            android:id="@+id/view_image_area"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/image_thumbnail"
+            app:layout_constraintEnd_toEndOf="@id/image_thumbnail"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/image_thumbnail"
+            app:layout_constraintTop_toTopOf="@id/image_thumbnail"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_detail_content"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_image_area"
+            app:layout_constraintVertical_bias="0.0">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide_content_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="@dimen/padding_side" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide_content_top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="12dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide_content_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="@dimen/padding_side" />
+
+                <TextView
+                    android:id="@+id/text_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="6dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="6dp"
+                    android:paddingBottom="4dp"
+                    android:text="@{String.valueOf(viewModel.productVo.rate)}"
+                    android:textSize="18dp"
+                    android:textColor="@color/grey_900"
+                    android:drawablePadding="@dimen/drawable_padding"
+                    app:drawableStartCompat="@drawable/ic_star"
+                    app:layout_constraintStart_toStartOf="@id/guide_content_start"
+                    app:layout_constraintTop_toTopOf="@id/guide_content_top"
+                    app:layout_constraintEnd_toEndOf="@id/guide_content_end"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    tools:text="9.9" />
+
+                <TextView
+                    android:id="@+id/text_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{`₩ ` + NumberFormat.getNumberInstance(Locale.US).format(viewModel.productVo.price)}"
+                    android:textSize="18dp"
+                    android:textColor="@color/grey_900"
+                    app:layout_constraintStart_toStartOf="@id/guide_content_start"
+                    app:layout_constraintTop_toBottomOf="@id/text_rate"
+                    app:layout_constraintEnd_toEndOf="@id/guide_content_end"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    tools:text="₩ 30,000" />
+                <ToggleButton
+                    android:id="@+id/image_favorite"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/toggle_detail_favorite"
+                    android:checked="@{viewModel.productVo.like}"
+                    android:textOn=""
+                    android:textOff=""
+                    android:onClick="@{() -> viewModel.onClickedFavorite(viewModel.productVo)}"
+                    app:layout_constraintStart_toEndOf="@id/text_rate"
+                    app:layout_constraintTop_toTopOf="@id/text_rate"
+                    app:layout_constraintEnd_toEndOf="@id/guide_content_end"
+                    app:layout_constraintBottom_toBottomOf="@id/text_price"
+                    app:layout_constraintVertical_bias="0.5"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    tools:checked="false"/>
+
+                <TextView
+                    android:id="@+id/text_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/item_text_margin_vertical"
+                    android:ellipsize="end"
+                    android:text="@{viewModel.productVo.name}"
+                    android:textColor="@color/grey_900"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/guide_content_start"
+                    app:layout_constraintTop_toBottomOf="@id/text_price"
+                    app:layout_constraintEnd_toEndOf="@id/guide_content_end"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    tools:text="내 집 같은 편안한 여기어때 숙소"/>
+                <TextView
+                    android:id="@+id/text_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/item_text_margin_vertical"
+                    android:ellipsize="end"
+                    android:text="@{viewModel.productVo.subject}"
+                    android:textColor="@color/grey_700"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toStartOf="@id/guide_content_start"
+                    app:layout_constraintTop_toBottomOf="@id/text_title"
+                    app:layout_constraintEnd_toEndOf="@id/guide_content_end"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    tools:text="합리적인 가격으로 안심, 청결, 내 집 같은 편암함을 제공합니다."/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="mint_tulip">#CAF7E3</color>
+    <color name="shadow_green">#99C4B1</color>
+    <color name="hint_of_green">#EDFFEC</color>
+    <color name="amour">#F6DFEB</color>
+    <color name="melanie">#E4BAD4</color>
+    <color name="bouquet">#B28AA3</color>
+
+
+    <color name="grey_50">#FAFAFA</color>
+    <color name="grey_700">#616161</color>
+    <color name="grey_800">#424242</color>
+    <color name="grey_900">#212121</color>
+    <color name="yellow_400">#FFEE58</color>
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+</resources>

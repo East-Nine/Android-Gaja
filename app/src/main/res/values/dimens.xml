@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="padding_side">16dp</dimen>
+    <dimen name="main_user_item_spacing">10dp</dimen>
+    <dimen name="item_text_margin_vertical">4dp</dimen>
+    <dimen name="drawable_padding">4dp</dimen>
+    <dimen name="item_padding">8dp</dimen>
+    <dimen name="image_rounded">4dp</dimen>
+</resources>

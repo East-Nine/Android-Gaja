@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="data"
+            type="com.eastnine.gaja.data.FavoriteFilterData" />
+
+        <variable
+            name="viewModel"
+            type="com.eastnine.gaja.viewmodel.FavoriteFilterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> viewModel.onClickedItem(data)}">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/padding_side" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/padding_side" />
+
+        <ToggleButton
+            android:id="@+id/image_favoriteTypeSelected"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/toggle_filter"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:checked="@{data.checked}"
+            android:textOn=""
+            android:textOff=""
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
+            tools:checked="true"/>
+        <TextView
+            android:id="@+id/text_FavoriteTypeTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@{data.title}"
+            android:textColor="@color/grey_50"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@id/image_favoriteTypeSelected"
+            app:layout_constraintTop_toTopOf="@id/image_favoriteTypeSelected"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintBottom_toBottomOf="@id/image_favoriteTypeSelected"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
+            tools:text="평점순 ▼"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
